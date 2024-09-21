@@ -1,11 +1,12 @@
 body {
-    background-image: url('wp5060553-dark-aesthetic-1920x1080-wallpapers.jpg'); /* Add your background image here */
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repetition */
-    font-family: 'Pacifico', cursive;
-    color: white; /* Set text color to white for better contrast */
+    background-image: url('wp5060553-dark-aesthetic-1920x1080-wallpapers.jpg'); /* Your background image */
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the body takes the full viewport height */
+    margin: 0; /* Removes default margin */
 }
+
 
 .container {
     text-align: center;
