@@ -1,21 +1,21 @@
 /* Main heart styling */
 .heart {
-    width: 25px; /* Make the heart smaller */
-    height: 25px;
-    background-color: rgb(0, 255, 149);
+    width: 50px;
+    height: 50px;
+    background-color: #77dd77; /* Pastel green */
     position: relative;
     margin: 20px auto;
-    transform: rotate(90deg);
-    animation: pulse 1.5s infinite; /* Slightly slower pulse animation */
+    transform: rotate(45deg);
+    animation: pulse 1.5s infinite;
 }
 
 .heart:before,
 .heart:after {
     content: "";
     position: absolute;
-    width: 25px; /* Adjust the size to match */
-    height: 25px;
-    background-color: rgb(0, 255, 85);
+    width: 50px;
+    height: 50px;
+    background-color: #77dd77; /* Pastel green */
     border-radius: 50%;
     top: -25px;
     left: 0;
@@ -31,7 +31,7 @@
         transform: scale(1) rotate(45deg);
     }
     50% {
-        transform: scale(1.1) rotate(45deg); /* Slight pulse effect */
+        transform: scale(1.1) rotate(45deg);
     }
     100% {
         transform: scale(1) rotate(45deg);
@@ -44,10 +44,10 @@
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: red;
+    background-color: #77dd77; /* Pastel green */
     transform: rotate(45deg);
     animation: fall linear infinite;
-    z-index: 1; /* Ensure it appears above the background but behind the text */
+    z-index: 1;
 }
 
 .falling-heart:before,
@@ -56,7 +56,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: red;
+    background-color: #77dd77; /* Pastel green */
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -73,13 +73,14 @@
     }
 }
 
-/* Other styles you already have */
+/* Center content on the page */
 body {
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column; /* Stack text and image vertically */
     height: 100vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -87,19 +88,30 @@ body {
 
 .container {
     text-align: center;
-    z-index: 1; /* Ensures text stays on top of falling hearts */
+    z-index: 1;
 }
 
+/* Style for the heading */
 h1 {
     font-size: 3rem;
+    margin-bottom: 10px;
 }
 
+/* Container for the image to add blur effect */
 .image-container {
     margin-top: 20px;
-}
-img {
-    width: 75px; /* Adjust the width to make the image smaller */
-    height: auto; /* Maintain the aspect ratio */
-    border-radius: 8px;
+    position: relative;
 }
 
+img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    filter: blur(10px); /* Blur image initially */
+    transition: filter 0.5s ease; /* Smooth transition when clicked */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+img.clicked {
+    filter: blur(0); /* Remove blur when clicked */
+}
