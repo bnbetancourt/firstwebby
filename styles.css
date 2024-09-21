@@ -97,4 +97,9 @@ h1 {
 .image-container {
     margin-top: 20px;
 }
+img {
+    width: 150px; /* Adjust the width to make the image smaller */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10px;
+}
 
