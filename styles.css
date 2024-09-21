@@ -1,34 +1,45 @@
-/* General styles */
 body {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+    background-image: url('wp5060553-dark-aesthetic-1920x1080-wallpapers.jpg'); /* Add your background image here */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repetition */
+    font-family: 'Pacifico', cursive;
+    color: white; /* Set text color to white for better contrast */
 }
 
-/* Container for text and image */
 .container {
     text-align: center;
     z-index: 1;
+    position: relative; /* To allow z-index to work properly */
 }
 
-/* Style for the heading */
 h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Container for the image */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgba(119, 221, 119, 0.8); /* Semi-transparent background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(102, 204, 102, 0.9);
+}
+
+#hiddenMessage {
+    margin-top: 10px;
+}
+
+/* Image container */
 .image-container {
     position: relative;
 }
 
-/* Style for the image */
 img {
     width: 200px;
     height: auto;
@@ -60,7 +71,7 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #77dd77;
+    background-color: #77dd77; /* Pastel green */
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -75,5 +86,15 @@ img.clicked {
 @keyframes fall {
     to {
         transform: translateY(100vh) rotate(45deg);
+    }
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    img {
+        width: 150px; /* Adjust image size for smaller screens */
     }
 }
