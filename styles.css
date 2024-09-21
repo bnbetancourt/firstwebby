@@ -1,41 +1,45 @@
-/* Main heart styling */
-.heart {
-    width: 50px;
-    height: 50px;
-    background-color: #77dd77; /* Pastel green */
+/* General styles */
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container for text and image */
+.container {
+    text-align: center;
+    z-index: 1;
+}
+
+/* Style for the heading */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Container for the image */
+.image-container {
     position: relative;
-    margin: 20px auto;
-    transform: rotate(45deg);
-    animation: pulse 1.5s infinite;
 }
 
-.heart:before,
-.heart:after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #77dd77; /* Pastel green */
-    border-radius: 50%;
-    top: -25px;
-    left: 0;
+/* Style for the image */
+img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    filter: blur(10px); /* Initial blur */
+    transition: filter 0.5s ease; /* Smooth transition */
+    cursor: pointer;
 }
 
-.heart:after {
-    top: 0;
-    left: 25px;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1) rotate(45deg);
-    }
-    50% {
-        transform: scale(1.1) rotate(45deg);
-    }
-    100% {
-        transform: scale(1) rotate(45deg);
-    }
+img.clicked {
+    filter: blur(0); /* Remove blur on click */
 }
 
 /* Styling for falling hearts */
@@ -47,7 +51,7 @@
     background-color: #77dd77; /* Pastel green */
     transform: rotate(45deg);
     animation: fall linear infinite;
-    z-index: 1;
+    z-index: 0; /* Behind the content */
 }
 
 .falling-heart:before,
@@ -56,7 +60,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #77dd77; /* Pastel green */
+    background-color: #77dd77;
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -67,51 +71,9 @@
     left: 10px;
 }
 
+/* Animation to make the hearts fall down the page */
 @keyframes fall {
     to {
         transform: translateY(100vh) rotate(45deg);
     }
-}
-
-/* Center content on the page */
-body {
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* Stack text and image vertically */
-    height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
-
-.container {
-    text-align: center;
-    z-index: 1;
-}
-
-/* Style for the heading */
-h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-/* Container for the image to add blur effect */
-.image-container {
-    margin-top: 20px;
-    position: relative;
-}
-
-img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    filter: blur(10px); /* Blur image initially */
-    transition: filter 0.5s ease; /* Smooth transition when clicked */
-    cursor: pointer; /* Show pointer on hover */
-}
-
-img.clicked {
-    filter: blur(0); /* Remove blur when clicked */
 }
