@@ -1,3 +1,14 @@
+/* Fireworks canvas setup */
+#fireworksCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Behind the other content */
+    pointer-events: none; /* Prevent interaction */
+}
+
 body {
     background-color: black;
     color: white;
@@ -11,6 +22,7 @@ body {
 
 .container {
     text-align: center;
+    z-index: 1; /* Ensures text stays on top of fireworks */
 }
 
 h1 {
