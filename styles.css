@@ -1,14 +1,79 @@
-/* Fireworks canvas setup */
-#fireworksCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0; /* Behind the other content */
-    pointer-events: none; /* Prevent interaction */
+/* Main heart styling */
+.heart {
+    width: 50px; /* Make the heart smaller */
+    height: 50px;
+    background-color: red;
+    position: relative;
+    margin: 20px auto;
+    transform: rotate(45deg);
+    animation: pulse 1.5s infinite; /* Slightly slower pulse animation */
 }
 
+.heart:before,
+.heart:after {
+    content: "";
+    position: absolute;
+    width: 50px; /* Adjust the size to match */
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    top: -25px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: 25px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1) rotate(45deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(45deg); /* Slight pulse effect */
+    }
+    100% {
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+/* Styling for falling hearts */
+.falling-heart {
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    top: -20px;
+    background-color: red;
+    transform: rotate(45deg);
+    animation: fall linear infinite;
+    z-index: 1; /* Ensure it appears above the background but behind the text */
+}
+
+.falling-heart:before,
+.falling-heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    top: -10px;
+    left: 0;
+}
+
+.falling-heart:after {
+    top: 0;
+    left: 10px;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(45deg);
+    }
+}
+
+/* Other styles you already have */
 body {
     background-color: black;
     color: white;
@@ -22,58 +87,14 @@ body {
 
 .container {
     text-align: center;
-    z-index: 1; /* Ensures text stays on top of fireworks */
+    z-index: 1; /* Ensures text stays on top of falling hearts */
 }
 
 h1 {
     font-size: 3rem;
 }
 
-.heart {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: relative;
-    margin: 20px auto;
-    transform: rotate(45deg);
-    animation: pulse 1s infinite;
-}
-
-.heart:before,
-.heart:after {
-    content: "";
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border-radius: 50%;
-    top: -50px;
-    left: 0;
-}
-
-.heart:after {
-    top: 0;
-    left: 50px;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1) rotate(45deg);
-    }
-    50% {
-        transform: scale(1.1) rotate(45deg);
-    }
-    100% {
-        transform: scale(1) rotate(45deg);
-    }
-}
-
 .image-container {
     margin-top: 20px;
 }
 
-img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
-}

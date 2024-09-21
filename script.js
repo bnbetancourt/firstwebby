@@ -1,67 +1,31 @@
 window.onload = function() {
-    // Canvas setup
-    const canvas = document.getElementById('fireworksCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Select the body element where hearts will be appended
+    const body = document.body;
 
-    // Helper function to create a random number in a range
+    // Function to generate a random number between min and max
     function random(min, max) {
         return Math.random() * (max - min) + min;
     }
 
-    // Firework class
-    class Firework {
-        constructor(x, y) {
-            this.x = x;
-            this.y = y;
-            this.radius = random(3, 6);
-            this.color = `hsl(${random(0, 360)}, 100%, 50%)`;
-            this.alpha = 1;
-            this.velocityX = random(-3, 3);
-            this.velocityY = random(-3, 3);
-        }
+    // Function to create a heart element
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        
+        // Set random position for each heart
+        heart.style.left = `${random(0, 100)}vw`;
 
-        update() {
-            this.x += this.velocityX;
-            this.y += this.velocityY;
-            this.alpha -= 0.01;
-        }
+        // Set random animation duration so hearts fall at different speeds
+        heart.style.animationDuration = `${random(3, 6)}s`;
 
-        draw() {
-            ctx.globalAlpha = this.alpha;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
+        body.appendChild(heart);
+
+        // Remove the heart after it falls out of view
+        setTimeout(() => {
+            heart.remove();
+        }, 6000); // Match the longest animation duration
     }
 
-    // Create an array to hold fireworks
-    const fireworks = [];
-
-    // Fireworks animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if (Math.random() < 0.05) {
-            for (let i = 0; i < random(10, 20); i++) {
-                fireworks.push(new Firework(random(0, canvas.width), random(0, canvas.height)));
-            }
-        }
-
-        fireworks.forEach((firework, index) => {
-            firework.update();
-            firework.draw();
-
-            if (firework.alpha <= 0) {
-                fireworks.splice(index, 1);
-            }
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
+    // Create hearts at regular intervals
+    setInterval(createHeart, 300); // Adjust this value to control the heart spawn rate
 };
