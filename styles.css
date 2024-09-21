@@ -1,11 +1,11 @@
 /* Main heart styling */
 .heart {
-    width: 50px; /* Make the heart smaller */
-    height: 50px;
-    background-color: red;
+    width: 25px; /* Make the heart smaller */
+    height: 25px;
+    background-color: rgb(0, 255, 149);
     position: relative;
     margin: 20px auto;
-    transform: rotate(45deg);
+    transform: rotate(90deg);
     animation: pulse 1.5s infinite; /* Slightly slower pulse animation */
 }
 
@@ -98,7 +98,7 @@ h1 {
     margin-top: 20px;
 }
 img {
-    width: 20px; /* Adjust the width to make the image smaller */
+    width: 50px; /* Adjust the width to make the image smaller */
     height: auto; /* Maintain the aspect ratio */
     border-radius: 5px;
 }
