@@ -7,7 +7,6 @@ window.onload = function() {
     const surpriseMessage = document.getElementById("surpriseMessage");
     const text1 = "Hey Jov's!";
     const text2 = "Put your finger on the envelope";
-    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
     let index1 = 0, index2 = 0;
 
     function typeText(text, element, index, callback) {
@@ -20,8 +19,8 @@ window.onload = function() {
         }
     }
 
-    typeText(text1, dynamicText, index1);
-    setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500);
+    typeText(text1, dynamicText, index1); // Start typing effect for the main text
+    setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
 
     // Play audio
     const audio = document.createElement('audio');
@@ -29,23 +28,19 @@ window.onload = function() {
     audio.autoplay = true;
     audio.loop = true;
     document.body.appendChild(audio);
-
-    // Show the firework
-    launchFirework();
 };
 
+// Show surprise message when envelope is clicked
 function showMessage() {
     const message = document.getElementById("surpriseMessage");
     message.classList.remove("hidden");
     const envelope = document.getElementById("envelope");
     envelope.innerHTML = "💌"; // Optionally add an icon
 
-    // Reset message text
-    message.innerHTML = ""; // Clear previous content
-
     // Typing effect for the surprise message
-    let index = 0;
     const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
+    let index = 0;
+    message.innerHTML = ""; // Clear previous content
 
     function typeSurpriseMessage() {
         if (index < thankYouMessage.length) {
@@ -53,9 +48,14 @@ function showMessage() {
             index++;
             setTimeout(typeSurpriseMessage, 100); // Typing speed
         } else {
-            launchFirework(); // Trigger the firework effect after the message is done
+            // Trigger fireworks and refresh after last message is printed
+            setTimeout(() => {
+                launchFirework();
+                setTimeout(() => location.reload(), 3000); // Refresh after 3 seconds
+            }, 1000);
         }
     }
+
     typeSurpriseMessage();
 }
 
@@ -74,74 +74,21 @@ function launchFirework() {
     heartShape.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
     heartShape.bezierCurveTo(85, 25, 75, 37, 75, 40);
     
-    let positionY = canvas.height; // Start from the bottom
-    const centerX = canvas.width / 2; // Center horizontally
-    let radius = 1;
-
+    let radius = 0;
+    
     const animateFirework = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "rgba(255, 0, 0, 1)";
         ctx.save();
-        ctx.translate(centerX, positionY); // Center the heart
+        ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.scale(radius, radius);
         ctx.fill(heartShape);
         ctx.restore();
-
-        // Update position and radius for animation
-        if (positionY > canvas.height / 2) {
-            positionY -= 5; // Move up
-            radius += 0.05; // Grow the heart
+        radius += 0.02;
+        if (radius < 5) {
             requestAnimationFrame(animateFirework);
-        } else {
-            explodeHearts(); // Trigger the explosion when the heart reaches the top
         }
     };
-
-    const explodeHearts = () => {
-        const smallHearts = [];
-        const numHearts = 20; // Number of small hearts
-
-        // Create small hearts
-        for (let i = 0; i < numHearts; i++) {
-            smallHearts.push({
-                x: centerX,
-                y: positionY,
-                radius: 5,
-                angle: Math.random() * 2 * Math.PI,
-                speed: Math.random() * 3 + 2, // Random speed
-            });
-        }
-
-        const animateExplosion = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            smallHearts.forEach((heart, index) => {
-                ctx.fillStyle = "rgba(255, 0, 0, 1)";
-                ctx.save();
-                ctx.translate(heart.x, heart.y);
-                ctx.scale(heart.radius, heart.radius);
-                ctx.fill(heartShape);
-                ctx.restore();
-
-                // Update position for explosion effect
-                heart.x += heart.speed * Math.cos(heart.angle);
-                heart.y += heart.speed * Math.sin(heart.angle);
-                heart.radius *= 0.95; // Shrink the heart
-
-                // Remove heart if it's too small
-                if (heart.radius < 0.1) {
-                    smallHearts.splice(index, 1);
-                }
-            });
-
-            if (smallHearts.length > 0) {
-                requestAnimationFrame(animateExplosion);
-            } else {
-                setTimeout(() => location.reload(), 1000); // Refresh the page after explosion
-            }
-        };
-
-        animateExplosion();
-    };
-
+    
     animateFirework();
 }
