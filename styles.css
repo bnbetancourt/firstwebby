@@ -84,7 +84,7 @@ img {
 
 .heart-bomb {
     font-size: 50px;
-    color: rgb(107, 3, 3);
+    color: rgb(25, 182, 135);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -95,7 +95,7 @@ img {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: rgb(70, 1, 1);
+    background-color: rgb(45, 189, 117);
     transform: rotate(45deg);
     z-index: 100;
     opacity: 1;

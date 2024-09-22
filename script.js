@@ -46,7 +46,7 @@ function showMessage() {
         if (index < thankYouMessage.length) {
             message.innerHTML += thankYouMessage.charAt(index);
             index++;
-            setTimeout(typeSurpriseMessage, 100); // Typing speed
+            setTimeout(typeSurpriseMessage, 80); // Typing speed
         } else {
             // Remove text and images before starting the heart bomb countdown
             setTimeout(() => {
@@ -92,7 +92,7 @@ function explodeHearts() {
     heartBomb.style.top = "50%";
     heartBomb.style.transform = "translate(-50%, -50%)";
     heartBomb.style.fontSize = "100px";
-    heartBomb.innerHTML = "💖";
+    heartBomb.innerHTML = "💚";
     document.body.appendChild(heartBomb);
 
     setTimeout(() => {
