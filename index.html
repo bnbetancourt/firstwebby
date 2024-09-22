@@ -35,29 +35,5 @@
 
     <script src="script.js"></script>
     <script src="aos.js"></script>
-    <script>
-        AOS.init(); // Initialize AOS library
-
-        // Typing effect for text
-        const text = "Hey Pussy!";
-        const dynamicText = document.getElementById("dynamicText");
-        let index = 0;
-
-        function typeText() {
-            if (index < text.length) {
-                dynamicText.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeText, 100); // Typing speed
-            }
-        }
-
-        typeText(); // Start typing effect
-
-        // Show surprise message
-        function showMessage() {
-            const surpriseMessage = document.getElementById("surpriseMessage");
-            surpriseMessage.classList.remove('hidden'); // Show the surprise message
-        }
-    </script>
 </body>
 </html>
