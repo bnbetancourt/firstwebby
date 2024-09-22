@@ -7,25 +7,25 @@ window.onload = function() {
         return Math.random() * (max - min) + min;
     }
 
-    // Function to create a heart element
     function createHeart() {
         const heart = document.createElement('div');
         heart.classList.add('falling-heart');
         
         // Set random position for each heart
         heart.style.left = `${random(0, 100)}vw`;
-
-        // Set random animation duration so hearts fall at different speeds
-        heart.style.animationDuration = `${random(3, 6)}s`;
-
+    
+        // Set random animation duration for falling hearts
+        const duration = random(3, 6);
+        heart.style.animationDuration = `${duration}s`;
+    
         body.appendChild(heart);
-
+    
         // Remove the heart after it falls out of view
         setTimeout(() => {
             heart.remove();
-        }, 6000); // Match the longest animation duration
+        }, duration * 1000); // Match the animation duration in milliseconds
     }
-
+    
     // Create hearts at regular intervals
     setInterval(createHeart, 300); // Adjust this value to control the heart spawn rate
 

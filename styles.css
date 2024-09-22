@@ -86,10 +86,16 @@ img.clicked {
 
 /* Animation to make the hearts fall down, rotate, and fade */
 @keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(360deg); /* Rotate 360 degrees while falling */
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
+        opacity: 0; /* Fade out */
     }
 }
+
 
 @keyframes rotate {
     from {

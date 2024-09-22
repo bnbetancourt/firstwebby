@@ -24,9 +24,6 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Include AOS library for scroll-triggered animations -->
-    <link href="aos.css" rel="stylesheet">
-
     <!-- Main Content Section -->
     <div class="container">
         <h1 data-aos="fade-up">Our Special Moments</h1>
@@ -39,6 +36,9 @@
 
         <!-- Button to trigger modal -->
         <button id="openModal" data-aos="fade-up" class="interactive-button">Click for a Surprise!</button>
+
+        <!-- Play Music Button -->
+        <button id="playAudio" class="play-button">Play Music</button>
     </div>
 
     <script src="script.js"></script>
@@ -46,13 +46,13 @@
     <script>
         AOS.init(); // Initialize AOS library
 
-        // Audio autoplay logic
-        window.addEventListener('load', function() {
+        // Play audio on button click
+        document.getElementById("playAudio").onclick = function() {
             var audio = document.getElementById("backgroundMusic");
             audio.play().catch(function(error) {
-                console.log("Autoplay failed, the user needs to interact first.");
+                console.log("Audio play failed: " + error);
             });
-        });
+        };
 
         // Modal logic
         const modal = document.getElementById("myModal");
