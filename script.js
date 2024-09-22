@@ -4,9 +4,11 @@ window.onload = function() {
     // Typing effect for text
     const dynamicText = document.getElementById("dynamicText");
     const envelopeText = document.getElementById("envelopeText");
+    const surpriseMessage = document.getElementById("surpriseMessage");
     const text1 = "Hey Pussy!";
     const text2 = "Click the envelope to reveal a surprise message!";
-    let index1 = 0, index2 = 0;
+    const thankYouMessage = "Thank you for being in my life!";
+    let index1 = 0, index2 = 0, index3 = 0;
 
     function typeText(text, element, index) {
         if (index < text.length) {
@@ -19,28 +21,18 @@ window.onload = function() {
     typeText(text1, dynamicText, index1); // Start typing effect for the main text
     setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
 
-    function random(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.classList.add('falling-heart');
-
-        heart.style.left = `${random(0, 100)}vw`;
-        heart.style.animationDuration = `${random(3, 6)}s`;
-
-        body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 6000);
-    }
-
-    setInterval(createHeart, 300);
-
+    // Delay the unblur effect for 2 seconds after the page loads
     const img1 = document.getElementById('firstImage');
     const img2 = document.getElementById('triggerImage');
+
+    setTimeout(() => {
+        img1.classList.remove('blurred');
+        img2.classList.remove('blurred');
+        setTimeout(() => {
+            img1.classList.add('fade');
+            img2.classList.add('fade');
+        }, 2000);
+    }, 2000);
 
     // Play audio
     const audio = document.createElement('audio');
@@ -56,4 +48,15 @@ function showMessage() {
     message.classList.remove("hidden");
     const envelope = document.getElementById("envelope");
     envelope.innerHTML = "💌"; // Optionally add an icon
+
+    // Typing effect for the surprise message
+    let index = 0;
+    function typeSurpriseMessage() {
+        if (index < thankYouMessage.length) {
+            message.innerHTML += thankYouMessage.charAt(index);
+            index++;
+            setTimeout(typeSurpriseMessage, 100); // Typing speed
+        }
+    }
+    typeSurpriseMessage();
 }
