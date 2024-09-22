@@ -60,28 +60,6 @@ img {
     cursor: pointer;
 }
 
-.falling-heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(70, 197, 119);
-    transform: rotate(45deg);
-    z-index: 100;
-    opacity: 1;
-    animation: fall linear forwards;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
 .heart-bomb {
     font-size: 50px;
     color: rgb(52, 216, 121);
@@ -91,12 +69,22 @@ img {
     transform: translate(-50%, -50%);
     z-index: 200;
 }
+
 .falling-heart {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(56, 226, 107); /* Change to your desired color */
-    transform: rotate(45deg);
-    border-radius: 50%; /* To make it round */
-    opacity: 1;
     position: absolute;
+    font-size: 24px; /* Default font size, will be randomized */
+    animation: fall 3s linear forwards; /* Fall animation */
+    z-index: 100;
+    opacity: 1;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0; /* Fade out as the hearts fall */
+    }
 }

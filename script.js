@@ -84,7 +84,7 @@ function startHeartBomb() {
 function explodeHearts() {
     const heartCount = 50; // Number of hearts to explode
     const heartElements = [];
-    
+
     const heartBomb = document.createElement("div");
     heartBomb.className = "heart-bomb";
     heartBomb.style.position = "fixed";
@@ -97,13 +97,15 @@ function explodeHearts() {
 
     setTimeout(() => {
         heartBomb.style.fontSize = "0px"; // Shrink heart bomb
+
         for (let i = 0; i < heartCount; i++) {
             const heart = document.createElement("div");
             heart.className = "falling-heart";
+            heart.innerHTML = "🤍"; // White heart emoji
             heart.style.position = "fixed";
-            heart.style.left = `${Math.random() * 100}vw`;
-            heart.style.top = `${Math.random() * 100}vh`;
-            heart.style.animationDuration = `${Math.random() * 1 + 2}s`; // Longer duration for falling effect
+            heart.style.left = `${Math.random() * 100}vw`; // Random position across the screen
+            heart.style.top = `${Math.random() * 100}vh`;  // Random top position
+            heart.style.fontSize = `${Math.random() * 40 + 10}px`; // Random size
             heart.style.opacity = Math.random();
             heartElements.push(heart);
             document.body.appendChild(heart);
@@ -111,9 +113,9 @@ function explodeHearts() {
 
         setTimeout(() => {
             heartElements.forEach(heart => {
-                heart.remove();
+                heart.remove(); // Remove hearts after they fall
             });
-            location.reload(); // Refresh after hearts explode
+            location.reload(); // Refresh the page after explosion
         }, 3000); // Keep hearts for 3 seconds
     }, 1000); // Delay before explosion
 }
