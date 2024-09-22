@@ -22,13 +22,13 @@
     <div class="soundcloud-player">
         <iframe width="300" height="166" scrolling="no" 
                 frameborder="no" allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/902081119&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1071940306&color=%23ff5500&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
         </iframe>
     </div>
 
     <!-- Main Content Section -->
     <div class="container">
-        <p data-aos="fade-up">Click the images to reveal something special!</p>
+        <p data-aos="fade-up" class="interactive-text">Click the images to reveal something special!</p>
         <div class="image-container" data-aos="fade-up">
             <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
         </div>
@@ -56,11 +56,9 @@
         typeText(); // Start typing effect
 
         // Modal logic
-        const modal = document.getElementById("myModal");
         const img1 = document.getElementById("firstImage");
         const img2 = document.getElementById("triggerImage");
         const btn = document.getElementById("openModal");
-        const closeModal = document.getElementsByClassName("close")[0];
 
         btn.onclick = function() {
             btn.innerHTML = "Thank you for making me the luckiest person alive!";

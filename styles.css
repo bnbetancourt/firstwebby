@@ -20,6 +20,11 @@ body {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
 }
 
+.interactive-text {
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
+}
+
 .soundcloud-player {
     position: absolute;
     left: 20px; /* Adjust the position */
