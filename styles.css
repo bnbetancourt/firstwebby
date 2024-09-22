@@ -30,7 +30,7 @@ body {
 .envelope {
     width: 50px;
     height: 50px;
-    background-image: url('envelope-icon.png'); /* Replace with your envelope icon */
+    background-image: url('icons8-heart-envelope-48.png'); /* Replace with your envelope icon */
     background-size: contain;
     background-repeat: no-repeat;
     position: fixed;
