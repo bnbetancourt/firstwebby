@@ -60,52 +60,6 @@ img {
     cursor: pointer;
 }
 
-/* Styling for falling hearts */
-.falling-heart {
-    width: 20px;
-    height: 20px;
-    position: fixed;
-    top: -20px;
-    background-color: #ffffff;
-    transform: rotate(45deg);
-    z-index: 0;
-    opacity: 1;
-}
-
-.falling-heart:before,
-.falling-heart:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ffffff;
-    border-radius: 50%;
-}
-
-.falling-heart:before {
-    top: -10px;
-    left: 0;
-}
-
-.falling-heart:after {
-    left: 10px;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.falling-heart {
-    animation: fall linear infinite;
-}
-
 /* Optional: smooth scrolling behavior */
 html {
     scroll-behavior: smooth;
