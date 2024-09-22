@@ -24,11 +24,11 @@ window.onload = function() {
     const img1 = document.getElementById('firstImage');
     const img2 = document.getElementById('triggerImage');
 
-    img1.addEventListener('click', function() {
-        img1.classList.remove('blurred'); // Remove blur for first image
-    });
+    img1.classList.remove('blurred'); // Slowly unblur first image
+    img2.classList.remove('blurred'); // Slowly unblur second image
 
-    img2.addEventListener('click', function() {
-        img2.classList.remove('blurred'); // Remove blur for second image
-    });
+    setTimeout(() => {
+        img1.classList.remove('blurred');
+        img2.classList.remove('blurred');
+    }, 2000); // Adjust delay for unblur effect
 };
