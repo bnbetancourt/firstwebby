@@ -2,19 +2,22 @@ window.onload = function() {
     const body = document.body;
 
     // Typing effect for text
-    const text = "Hey Jov's!";
     const dynamicText = document.getElementById("dynamicText");
-    let index = 0;
+    const envelopeText = document.getElementById("envelopeText");
+    const text1 = "Hey Pussy!";
+    const text2 = "Click the envelope to reveal a surprise message!";
+    let index1 = 0, index2 = 0;
 
-    function typeText() {
+    function typeText(text, element, index) {
         if (index < text.length) {
-            dynamicText.innerHTML += text.charAt(index);
+            element.innerHTML += text.charAt(index);
             index++;
-            setTimeout(typeText, 100); // Typing speed
+            setTimeout(() => typeText(text, element, index), 100); // Typing speed
         }
     }
 
-    typeText(); // Start typing effect
+    typeText(text1, dynamicText, index1); // Start typing effect for the main text
+    setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
 
     function random(min, max) {
         return Math.random() * (max - min) + min;
@@ -52,3 +55,11 @@ window.onload = function() {
     audio.loop = true;
     document.body.appendChild(audio);
 };
+
+// Show surprise message when envelope is clicked
+function showMessage() {
+    const message = document.getElementById("surpriseMessage");
+    message.classList.remove("hidden");
+    const envelope = document.getElementById("envelope");
+    envelope.innerHTML = "💌"; // Optionally add an icon
+}
