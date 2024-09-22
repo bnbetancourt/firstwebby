@@ -8,13 +8,15 @@ window.onload = function() {
     const text1 = "Hey Pussy!";
     const text2 = "Click the envelope to reveal a surprise message!";
     const thankYouMessage = "Thank you for being in my life!";
-    let index1 = 0, index2 = 0, index3 = 0;
+    let index1 = 0, index2 = 0;
 
-    function typeText(text, element, index) {
+    function typeText(text, element, index, callback) {
         if (index < text.length) {
             element.innerHTML += text.charAt(index);
             index++;
-            setTimeout(() => typeText(text, element, index), 100); // Typing speed
+            setTimeout(() => typeText(text, element, index, callback), 100); // Typing speed
+        } else if (callback) {
+            callback();
         }
     }
 
@@ -28,10 +30,6 @@ window.onload = function() {
     setTimeout(() => {
         img1.classList.remove('blurred');
         img2.classList.remove('blurred');
-        setTimeout(() => {
-            img1.classList.add('fade');
-            img2.classList.add('fade');
-        }, 2000);
     }, 2000);
 
     // Play audio
@@ -49,8 +47,13 @@ function showMessage() {
     const envelope = document.getElementById("envelope");
     envelope.innerHTML = "💌"; // Optionally add an icon
 
+    // Reset message text
+    message.innerHTML = ""; // Clear previous content
+
     // Typing effect for the surprise message
     let index = 0;
+    const thankYouMessage = "Thank you for being in my life!";
+
     function typeSurpriseMessage() {
         if (index < thankYouMessage.length) {
             message.innerHTML += thankYouMessage.charAt(index);
