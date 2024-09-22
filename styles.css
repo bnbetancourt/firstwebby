@@ -64,7 +64,7 @@ img {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: red;
+    background-color: rgb(70, 197, 119);
     transform: rotate(45deg);
     z-index: 100;
     opacity: 1;
@@ -84,19 +84,10 @@ img {
 
 .heart-bomb {
     font-size: 50px;
-    color: rgb(25, 182, 135);
+    color: rgb(52, 216, 121);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
-}
-.falling-heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(45, 189, 117);
-    transform: rotate(45deg);
-    z-index: 100;
-    opacity: 1;
 }
