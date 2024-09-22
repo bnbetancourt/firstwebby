@@ -11,7 +11,7 @@
     <canvas id="fireworksCanvas"></canvas>
 
     <div class="container">
-        <h1>sup pussy!</h1>
+        <h1>hey pussy!</h1>
         <div class="heart"></div>
         <div class="image-container">
             <img src="IMG_1594.JPG" alt="Picture of Us Together">
@@ -26,3 +26,74 @@
     <source src="Daniel Caesar - Horsepower.mp3" type="audio/mp3">
     Your browser does not support the audio element.
 </audio>
+ <!-- Include AOS library for scroll-triggered animations -->
+ <link href="aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Parallax Background -->
+    <div class="parallax"></div>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <h1 data-aos="fade-up">Our Special Moments</h1>
+        <p data-aos="fade-up">Click the image or button to reveal something special!</p>
+
+        <!-- Image that triggers modal -->
+        <div class="image-container" data-aos="fade-up">
+            <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
+        </div>
+
+        <!-- Button to trigger modal -->
+        <button id="openModal" data-aos="fade-up" class="interactive-button">Click for a Surprise!</button>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content" data-aos="zoom-in">
+            <span class="close">&times;</span>
+            <h2>A Special Message</h2>
+            <p>Being with you feels like a drive back from the beach down pch</p>
+            <!-- Slideshow or other content can go here -->
+            <div class="slideshow">
+                <img src="memory1.jpg" alt="Memory 1">
+            </div>
+        </div>
+    </div>
+
+    <!-- Include AOS script for scroll-triggered animations -->
+    <script src="aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS library
+
+        // Modal logic
+        const modal = document.getElementById("myModal");
+        const img = document.getElementById("triggerImage");
+        const btn = document.getElementById("openModal");
+        const closeModal = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        img.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Remove blur when image is clicked
+        img.onclick = function() {
+            modal.style.display = "block";
+            img.classList.remove('blurred');
+        }
+    </script>
+</body>
+</html>

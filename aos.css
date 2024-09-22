@@ -1,0 +1,29 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.aos-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    margin: 20px;
+}
+
+.aos-item.aos-fade-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aos-item.aos-fade-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.aos-item.aos-fade-right {
+    opacity: 1;
+    transform: translateX(0);
+}
