@@ -48,8 +48,14 @@ function showMessage() {
             index++;
             setTimeout(typeSurpriseMessage, 100); // Typing speed
         } else {
-            // Start heart bomb countdown after last message is printed
-            startHeartBomb();
+            // Remove text and images before starting the heart bomb countdown
+            setTimeout(() => {
+                dynamicText.innerHTML = "";
+                envelopeText.innerHTML = "";
+                message.innerHTML = "";
+                document.querySelectorAll('.image-container').forEach(container => container.style.display = 'none');
+                startHeartBomb();
+            }, 500); // Delay before starting the countdown
         }
     }
 
@@ -59,6 +65,7 @@ function showMessage() {
 function startHeartBomb() {
     const heartBomb = document.getElementById("heartBomb");
     heartBomb.style.display = "block";
+    heartBomb.style.fontSize = "100px"; // Make heart bomb big
     heartBomb.innerHTML = "3"; // Start with 3
 
     let count = 3;
@@ -78,20 +85,35 @@ function explodeHearts() {
     const heartCount = 50; // Number of hearts to explode
     const heartElements = [];
     
-    for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement("div");
-        heart.className = "falling-heart";
-        heart.style.left = `${Math.random() * 100}vw`;
-        heart.style.animationDuration = `${Math.random() * 1 + 1}s`;
-        heart.style.opacity = Math.random();
-        heartElements.push(heart);
-        document.body.appendChild(heart);
-    }
+    const heartBomb = document.createElement("div");
+    heartBomb.className = "heart-bomb";
+    heartBomb.style.position = "fixed";
+    heartBomb.style.left = "50%";
+    heartBomb.style.top = "50%";
+    heartBomb.style.transform = "translate(-50%, -50%)";
+    heartBomb.style.fontSize = "100px";
+    heartBomb.innerHTML = "💖";
+    document.body.appendChild(heartBomb);
 
     setTimeout(() => {
-        heartElements.forEach(heart => {
-            heart.remove();
-        });
-        location.reload(); // Refresh after hearts explode
-    }, 3000); // Keep hearts for 3 seconds
+        heartBomb.style.fontSize = "0px"; // Shrink heart bomb
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement("div");
+            heart.className = "falling-heart";
+            heart.style.position = "fixed";
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            heart.style.animationDuration = `${Math.random() * 1 + 2}s`; // Longer duration for falling effect
+            heart.style.opacity = Math.random();
+            heartElements.push(heart);
+            document.body.appendChild(heart);
+        }
+
+        setTimeout(() => {
+            heartElements.forEach(heart => {
+                heart.remove();
+            });
+            location.reload(); // Refresh after hearts explode
+        }, 3000); // Keep hearts for 3 seconds
+    }, 1000); // Delay before explosion
 }
