@@ -50,11 +50,5 @@ function showMessage() {
         }
     }
 
-    // Unblur images
-    const img1 = document.getElementById('firstImage');
-    const img2 = document.getElementById('triggerImage');
-    img1.classList.remove('blurred');
-    img2.classList.remove('blurred');
-
     typeSurpriseMessage();
 }
