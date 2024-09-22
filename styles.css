@@ -61,8 +61,8 @@ img.clicked {
     position: fixed;
     top: -20px;
     background-color: white; /* Change heart color to white */
-    transform: rotate(45deg);
-    animation: fall 5s linear infinite, rotate 2s linear infinite, pulse 1.5s ease-in-out infinite, fadeOut 5s linear infinite;
+    transform-origin: center; /* Set the rotation point to the center */
+    animation: fall 5s linear infinite, rotate 5s linear infinite, pulse 1.5s ease-in-out infinite, fadeOut 5s linear infinite;
     z-index: 0; /* Behind the content */
 }
 
@@ -83,7 +83,7 @@ img.clicked {
     left: 10px;
 }
 
-/* Keyframes for the hearts falling down */
+/* Keyframes for falling down the screen */
 @keyframes fall {
     0% {
         top: -20px;
@@ -93,27 +93,27 @@ img.clicked {
     }
 }
 
-/* Keyframes for rotating the hearts as they fall */
+/* Keyframes for rotating the hearts */
 @keyframes rotate {
     0% {
-        transform: rotate(45deg);
+        transform: rotate(45deg); /* Initial heart orientation */
     }
     100% {
-        transform: rotate(405deg); /* 360 degrees + 45deg for initial rotation */
+        transform: rotate(405deg); /* Full 360-degree rotation + initial 45-degree offset */
     }
 }
 
-/* Keyframes for pulsing (growing and shrinking the hearts) */
+/* Keyframes for pulsing the hearts */
 @keyframes pulse {
     0%, 100% {
-        transform: scale(1) rotate(45deg); /* Start and end at the normal size */
+        transform: scale(1) rotate(45deg); /* Maintain the initial 45-degree rotation */
     }
     50% {
-        transform: scale(1.2) rotate(45deg); /* Increase size at the middle of the pulse */
+        transform: scale(1.2) rotate(45deg); /* Pulse the size while keeping the rotation */
     }
 }
 
-/* Keyframes for fading out the hearts as they fall */
+/* Keyframes for fading out as they fall */
 @keyframes fadeOut {
     0% {
         opacity: 1; /* Start fully visible */
