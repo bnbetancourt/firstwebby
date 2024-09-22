@@ -38,7 +38,7 @@ function showMessage() {
     envelope.innerHTML = "💌"; // Optionally add an icon
 
     // Typing effect for the surprise message
-    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down. I can never fully explain just how I feel about you because words will never be enough. You entering my life has been the best thing to ever happen to me and I enjoy every second of my days spent with you. You mean more than the world to me pussyboy, I hope I can even get close to giving to as much as you deserve, because you honestly deserve more than what this world has to offer";
+    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down. I can never fully explain just how I feel about you because words will never be enough. You entering my life has been the best thing to ever happen to me and I enjoy every second of my days spent with you. You mean more than the world to me pussyboy, I hope I can even get close enough to giving to as much as you deserve;you honestly deserve more than what this world has to offer";
     let index = 0;
     message.innerHTML = ""; // Clear previous content
 
@@ -92,7 +92,7 @@ function explodeHearts() {
     heartBomb.style.top = "50%";
     heartBomb.style.transform = "translate(-50%, -50%)";
     heartBomb.style.fontSize = "100px";
-    heartBomb.innerHTML = "💖";
+    heartBomb.innerHTML = "♡";
     document.body.appendChild(heartBomb);
 
     setTimeout(() => {
