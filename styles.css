@@ -58,6 +58,8 @@ img {
     height: auto;
     border-radius: 10px;
     cursor: pointer;
+    filter: blur(10px); /* Short blur effect */
+    transition: filter 1s ease; /* Smooth transition for unblurring */
 }
 
 /* Styling for falling hearts */
