@@ -73,28 +73,26 @@ function launchFirework() {
     heartShape.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
     heartShape.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
     heartShape.bezierCurveTo(85, 25, 75, 37, 75, 40);
-
-    let radius = 0;
-    let explode = false;
+    
+    let positionY = canvas.height;
+    let radius = 1;
 
     const animateFirework = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "rgba(255, 0, 0, 1)";
         ctx.save();
-        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.translate(canvas.width / 2, positionY);
+        ctx.scale(radius, radius);
+        ctx.fill(heartShape);
+        ctx.restore();
 
-        if (!explode) {
-            // Move the firework up
-            ctx.scale(0.1 + radius * 0.1, 0.1 + radius * 0.1);
-            ctx.fill(heartShape);
-            radius += 0.05;
-            if (radius < 10) {
-                requestAnimationFrame(animateFirework);
-            } else {
-                explode = true; // Start explosion
-                radius = 0;
-                setTimeout(() => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = "rgba(255, 0, 0, 1)";
-                    ctx.scale(1.5, 1.5);
-                    ctx.fill(heartSh
+        // Update position and radius for animation
+        if (positionY > canvas.height / 2) {
+            positionY -= 5; // Move up
+            radius += 0.05; // Grow the heart
+            requestAnimationFrame(animateFirework);
+        }
+    };
+    
+    animateFirework();
+}
