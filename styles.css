@@ -60,46 +60,40 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: #ffffff; /* Change to white */
+    background-color: #ffffff; /* White color */
     transform: rotate(45deg);
-    animation: fall linear infinite;
-    z-index: 0; /* Behind the content */
+    z-index: 0;
+    opacity: 1; /* Set initial opacity */
 }
 
+.falling-heart:before,
+.falling-heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff; /* White color */
+    border-radius: 50%;
+}
+
+.falling-heart:before {
+    top: -10px; /* Move up for heart shape */
+    left: 0;
+}
+
+.falling-heart:after {
+    left: 10px; /* Move right for heart shape */
+}
+
+/* Animation */
 @keyframes fall {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
-        opacity: 0; /* Fade out */
-    }
-}
-
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg); /* Continuous rotation */
-    }
-}
-
-@keyframes fade {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0; /* Fade out as the hearts fall */
-    }
-}
-
-/* Animation to make the hearts fall down the page */
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(45deg);
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
     }
 }
 
