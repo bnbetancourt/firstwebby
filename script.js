@@ -48,47 +48,50 @@ function showMessage() {
             index++;
             setTimeout(typeSurpriseMessage, 100); // Typing speed
         } else {
-            // Trigger fireworks and refresh after last message is printed
-            setTimeout(() => {
-                launchFirework();
-                setTimeout(() => location.reload(), 3000); // Refresh after 3 seconds
-            }, 1000);
+            // Start heart bomb countdown after last message is printed
+            setTimeout(startHeartBomb, 500); // Delay before starting the countdown
         }
     }
 
     typeSurpriseMessage();
 }
 
-function launchFirework() {
-    const canvas = document.getElementById('fireworksCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function startHeartBomb() {
+    const heartBomb = document.getElementById("heartBomb");
+    heartBomb.style.display = "block";
+    heartBomb.innerHTML = "3"; // Start with 3
 
-    const heartShape = new Path2D();
-    heartShape.moveTo(75, 40);
-    heartShape.bezierCurveTo(75, 37, 70, 25, 50, 25);
-    heartShape.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
-    heartShape.bezierCurveTo(20, 80, 40, 102, 75, 120);
-    heartShape.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
-    heartShape.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
-    heartShape.bezierCurveTo(85, 25, 75, 37, 75, 40);
-    
-    let radius = 0;
-    
-    const animateFirework = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "rgba(255, 0, 0, 1)";
-        ctx.save();
-        ctx.translate(canvas.width / 2, canvas.height / 2);
-        ctx.scale(radius, radius);
-        ctx.fill(heartShape);
-        ctx.restore();
-        radius += 0.02;
-        if (radius < 5) {
-            requestAnimationFrame(animateFirework);
+    let count = 3;
+    const countdown = setInterval(() => {
+        count--;
+        if (count > 0) {
+            heartBomb.innerHTML = count;
+        } else {
+            heartBomb.innerHTML = ""; // Clear countdown
+            clearInterval(countdown);
+            explodeHearts();
         }
-    };
+    }, 1000);
+}
+
+function explodeHearts() {
+    const heartCount = 50; // Number of hearts to explode
+    const heartElements = [];
     
-    animateFirework();
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement("div");
+        heart.className = "falling-heart";
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${Math.random() * 1 + 1}s`;
+        heart.style.opacity = Math.random();
+        heartElements.push(heart);
+        document.body.appendChild(heart);
+    }
+
+    setTimeout(() => {
+        heartElements.forEach(heart => {
+            heart.remove();
+        });
+        location.reload(); // Refresh after hearts explode
+    }, 3000); // Keep hearts for 3 seconds
 }
