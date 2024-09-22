@@ -99,4 +99,4 @@ img {
     transform: rotate(45deg);
     z-index: 100;
     opacity: 1;
-    animation: fall linear forwards;
+}
