@@ -19,8 +19,8 @@ window.onload = function() {
         }
     }
 
-    typeText(text1, dynamicText, index1);
-    setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500);
+    typeText(text1, dynamicText, index1); // Start typing effect for the main text
+    setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
 
     // Play audio
     const audio = document.createElement('audio');
@@ -35,133 +35,85 @@ function showMessage() {
     const message = document.getElementById("surpriseMessage");
     message.classList.remove("hidden");
     const envelope = document.getElementById("envelope");
-    envelope.innerHTML = "💌";
+    envelope.innerHTML = "💌"; // Optionally add an icon
 
+    // Typing effect for the surprise message
     const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down. I can never fully explain just how I feel about you because words will never be enough. You entering my life has been the best thing to ever happen to me and I enjoy every second of my days spent with you. You mean more than the world to me pussyboy, I hope I can even get close to giving to as much as you deserve, because you honestly deserve more than what this world has to offer";
     let index = 0;
-    message.innerHTML = ""; 
+    message.innerHTML = ""; // Clear previous content
 
     function typeSurpriseMessage() {
         if (index < thankYouMessage.length) {
             message.innerHTML += thankYouMessage.charAt(index);
             index++;
-            setTimeout(typeSurpriseMessage, 100);
+            setTimeout(typeSurpriseMessage, 100); // Typing speed
         } else {
+            // Remove text and images before starting the heart bomb countdown
             setTimeout(() => {
-                clearContent();
-                setTimeout(launchHeartBomb, 2000); // Start bomb after 2 seconds
-            }, 1000);
+                dynamicText.innerHTML = "";
+                envelopeText.innerHTML = "";
+                message.innerHTML = "";
+                document.querySelectorAll('.image-container').forEach(container => container.style.display = 'none');
+                startHeartBomb();
+            }, 500); // Delay before starting the countdown
         }
     }
 
     typeSurpriseMessage();
 }
 
-function clearContent() {
-    const dynamicText = document.getElementById("dynamicText");
-    const envelopeText = document.getElementById("envelopeText");
-    const surpriseMessage = document.getElementById("surpriseMessage");
-    const images = document.querySelectorAll('.image-container img');
+function startHeartBomb() {
+    const heartBomb = document.getElementById("heartBomb");
+    heartBomb.style.display = "block";
+    heartBomb.style.fontSize = "100px"; // Make heart bomb big
+    heartBomb.innerHTML = "3"; // Start with 3
 
-    dynamicText.innerHTML = "";
-    envelopeText.innerHTML = "";
-    surpriseMessage.innerHTML = "";
-    images.forEach(img => img.style.display = 'none'); // Hide images
-}
-
-function launchHeartBomb() {
-    const canvas = document.getElementById('fireworksCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let countdown = 3;
-    const countdownElement = document.createElement('div');
-    countdownElement.style.position = 'absolute';
-    countdownElement.style.top = '50%';
-    countdownElement.style.left = '50%';
-    countdownElement.style.transform = 'translate(-50%, -50%)';
-    countdownElement.style.fontSize = '48px';
-    countdownElement.style.color = 'white';
-    document.body.appendChild(countdownElement);
-
-    const countdownInterval = setInterval(() => {
-        countdownElement.innerHTML = countdown;
-        countdown--;
-        if (countdown < 0) {
-            clearInterval(countdownInterval);
-            countdownElement.innerHTML = "";
-            explodeHeart();
+    let count = 3;
+    const countdown = setInterval(() => {
+        count--;
+        if (count > 0) {
+            heartBomb.innerHTML = count;
+        } else {
+            heartBomb.innerHTML = ""; // Clear countdown
+            clearInterval(countdown);
+            explodeHearts();
         }
     }, 1000);
 }
 
-function explodeHeart() {
-    const canvas = document.getElementById('fireworksCanvas');
-    const ctx = canvas.getContext('2d');
-    const heartShape = new Path2D();
-    heartShape.moveTo(75, 40);
-    heartShape.bezierCurveTo(75, 37, 70, 25, 50, 25);
-    heartShape.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
-    heartShape.bezierCurveTo(20, 80, 40, 102, 75, 120);
-    heartShape.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
-    heartShape.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
-    heartShape.bezierCurveTo(85, 25, 75, 37, 75, 40);
+function explodeHearts() {
+    const heartCount = 50; // Number of hearts to explode
+    const heartElements = [];
     
-    let scale = 1;
-    const explode = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "rgba(255, 0, 0, 1)";
-        ctx.save();
-        ctx.translate(canvas.width / 2, canvas.height / 2);
-        ctx.scale(scale, scale);
-        ctx.fill(heartShape);
-        ctx.restore();
-        scale += 0.05; // Increase the scale more slowly
-        if (scale < 5) {
-            requestAnimationFrame(explode);
-        } else {
-            createLittleHearts();
+    const heartBomb = document.createElement("div");
+    heartBomb.className = "heart-bomb";
+    heartBomb.style.position = "fixed";
+    heartBomb.style.left = "50%";
+    heartBomb.style.top = "50%";
+    heartBomb.style.transform = "translate(-50%, -50%)";
+    heartBomb.style.fontSize = "100px";
+    heartBomb.innerHTML = "💖";
+    document.body.appendChild(heartBomb);
+
+    setTimeout(() => {
+        heartBomb.style.fontSize = "0px"; // Shrink heart bomb
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement("div");
+            heart.className = "falling-heart";
+            heart.style.position = "fixed";
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.top = `${Math.random() * 100}vh`;
+            heart.style.animationDuration = `${Math.random() * 1 + 2}s`; // Longer duration for falling effect
+            heart.style.opacity = Math.random();
+            heartElements.push(heart);
+            document.body.appendChild(heart);
         }
-    };
 
-    explode();
-}
-
-function createLittleHearts() {
-    const littleHeartsCount = 50; // Number of hearts to create
-    const hearts = [];
-
-    for (let i = 0; i < littleHeartsCount; i++) {
-        const heart = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            size: Math.random() * 10 + 5, // Size of the heart
-            angle: Math.random() * 2 * Math.PI, // Random angle
-            speed: Math.random() * 2 + 1 // Speed of the heart
-        };
-        hearts.push(heart);
-    }
-
-    let animationFrame;
-
-    const animateHearts = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        hearts.forEach(heart => {
-            heart.x += Math.cos(heart.angle) * heart.speed;
-            heart.y += Math.sin(heart.angle) * heart.speed;
-            ctx.fillStyle = "red";
-            ctx.beginPath();
-            ctx.arc(heart.x, heart.y, heart.size, 0, Math.PI * 2);
-            ctx.fill();
-        });
-
-        if (hearts.length > 0) {
-            animationFrame = requestAnimationFrame(animateHearts);
-        } else {
-            setTimeout(() => location.reload(), 2000); // Refresh after 2 seconds
-        }
-    };
-
-    animateHearts();
+        setTimeout(() => {
+            heartElements.forEach(heart => {
+                heart.remove();
+            });
+            location.reload(); // Refresh after hearts explode
+        }, 3000); // Keep hearts for 3 seconds
+    }, 1000); // Delay before explosion
 }
