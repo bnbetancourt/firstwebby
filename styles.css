@@ -60,31 +60,12 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: #ffffff; /* White heart color */
+    background-color: #ffffff; /* Change to white */
     transform: rotate(45deg);
-    animation: fall linear infinite, rotate 6s infinite, fade 6s infinite; /* Added rotate and fade animations */
+    animation: fall linear infinite;
     z-index: 0; /* Behind the content */
-    opacity: 1;
 }
 
-.falling-heart:before,
-.falling-heart:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    top: -10px;
-    left: 0;
-}
-
-.falling-heart:after {
-    top: 0;
-    left: 10px;
-}
-
-/* Animation to make the hearts fall down, rotate, and fade */
 @keyframes fall {
     0% {
         transform: translateY(0) rotate(0deg);

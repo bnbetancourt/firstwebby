@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- The fireworks canvas -->
     <canvas id="fireworksCanvas"></canvas>
 
     <div class="container">
@@ -18,19 +17,24 @@
         </div>
     </div>
 
-    <!-- Audio Player for Daniel Caesar Song -->
-    <audio id="backgroundMusic" autoplay loop>
+    <audio id="backgroundMusic" loop>
         <source src="Daniel Caesar - Horsepower.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
     </audio>
-        <!-- Play Music Button -->
+
+    <div class="container">
+        <h1 data-aos="fade-up">Our Special Moments</h1>
+        <p data-aos="fade-up">Click the image or button to reveal something special!</p>
+        <div class="image-container" data-aos="fade-up">
+            <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
+        </div>
+        <button id="openModal" data-aos="fade-up" class="interactive-button">Click for a Surprise!</button>
         <button id="playAudio" class="play-button">Play Music</button>
     </div>
 
     <script src="script.js"></script>
     <script src="aos.js"></script>
     <script>
-        AOS.init(); // Initialize AOS library
+        AOS.init();
 
         // Play audio on button click
         document.getElementById("playAudio").onclick = function() {
@@ -40,35 +44,7 @@
             });
         };
 
-        // Modal logic
-        const modal = document.getElementById("myModal");
-        const img = document.getElementById("triggerImage");
-        const btn = document.getElementById("openModal");
-        const closeModal = document.getElementsByClassName("close")[0];
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        img.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Remove blur when image is clicked
-        img.onclick = function() {
-            modal.style.display = "block";
-            img.classList.remove('blurred');
-        }
+        // Modal logic...
     </script>
 </body>
 </html>
