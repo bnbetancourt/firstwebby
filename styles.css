@@ -15,8 +15,9 @@ body {
     position: relative;
 }
 
-h1 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+#dynamicText {
+    color: white; /* Text color */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
 }
 
 .interactive-button {

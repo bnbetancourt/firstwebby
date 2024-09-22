@@ -11,10 +11,10 @@
     <canvas id="fireworksCanvas"></canvas>
 
     <div class="container">
-        <h1>Hey Pussy!</h1>
+        <h1 id="dynamicText"></h1>
         <div class="heart"></div>
         <div class="image-container">
-            <img src="IMG_1594.JPG" alt="Picture of Us Together">
+            <img src="IMG_1594.JPG" alt="Picture of Us Together" class="blurred" id="firstImage">
         </div>
     </div>
 
@@ -22,18 +22,18 @@
     <div class="soundcloud-player">
         <iframe width="300" height="166" scrolling="no" 
                 frameborder="no" allow="autoplay" 
-                src="https://soundcloud.com/user-256838458/daniel-caesar-horsepower-fixed">
+                src="https://soundcloud.com/user-256838458/daniel-caesar-horsepower-fixed?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
         </iframe>
     </div>
 
     <!-- Main Content Section -->
     <div class="container">
         <h1 data-aos="fade-up">My Bio Nerd</h1>
-        <p data-aos="fade-up">Being with you feels like a drive back home from the beach, going down PCH, all windows down</p>
+        <p data-aos="fade-up">Being with you feels like a drive back home from the beach, down PCH, all windows down, music blasting!</p>
         <div class="image-container" data-aos="fade-up">
             <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
         </div>
-        <button id="openModal" data-aos="fade-up" class="interactive-button">Miss you!</button>
+        <button id="openModal" data-aos="fade-up" class="interactive-button">Click for a Surprise!</button>
     </div>
 
     <script src="script.js"></script>
@@ -41,9 +41,25 @@
     <script>
         AOS.init(); // Initialize AOS library
 
+        // Typing effect for text
+        const text = "Hey Pussy!";
+        const dynamicText = document.getElementById("dynamicText");
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                dynamicText.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeText, 100); // Typing speed
+            }
+        }
+
+        typeText(); // Start typing effect
+
         // Modal logic
         const modal = document.getElementById("myModal");
-        const img = document.getElementById("triggerImage");
+        const img1 = document.getElementById("firstImage");
+        const img2 = document.getElementById("triggerImage");
         const btn = document.getElementById("openModal");
         const closeModal = document.getElementsByClassName("close")[0];
 
@@ -51,9 +67,13 @@
             modal.style.display = "block";
         }
 
-        img.onclick = function() {
+        img1.onclick = function() {
+            img1.classList.remove('blurred'); // Unblur first image
+        }
+
+        img2.onclick = function() {
             modal.style.display = "block";
-            img.classList.remove('blurred'); // Ensure the image unblurs
+            img2.classList.remove('blurred'); // Unblur second image
         }
 
         closeModal.onclick = function() {
