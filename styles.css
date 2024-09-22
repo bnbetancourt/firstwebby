@@ -60,7 +60,7 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: #77dd77; /* Pastel green */
+    background-color: #ffffff; /* Pastel green */
     transform: rotate(45deg);
     animation: fall linear infinite;
     z-index: 0; /* Behind the content */
@@ -72,7 +72,7 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #77dd77; /* Pastel green */
+    background-color: #ffffff; /* Pastel green */
     border-radius: 50%;
     top: -10px;
     left: 0;
