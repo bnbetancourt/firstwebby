@@ -1,42 +1,38 @@
 body {
-    background-image: url('dark-night-1920-x-1080-background-g4y4gx9al85th5v4.jpg'); /* Your background image */
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    height: 100vh; /* Ensures the body takes the full viewport height */
-    margin: 0; /* Removes default margin */
+    background-image: url('dark-night-1920-x-1080-background-g4y4gx9al85th5v4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
 }
-
 
 .container {
     text-align: center;
     z-index: 1;
-    position: relative; /* To allow z-index to work properly */
+    position: relative;
 }
 
 h1 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-button {
+.interactive-button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: rgba(119, 221, 119, 0.8); /* Semi-transparent background */
+    background-color: rgba(119, 221, 119, 0.8);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
+.interactive-button:hover {
     background-color: rgba(102, 204, 102, 0.9);
 }
 
-#hiddenMessage {
-    margin-top: 10px;
-}
-
-/* Image container */
 .image-container {
     position: relative;
 }
@@ -45,13 +41,13 @@ img {
     width: 200px;
     height: auto;
     border-radius: 10px;
-    filter: blur(10px); /* Initial blur */
-    transition: filter 0.5s ease; /* Smooth transition */
+    filter: blur(10px);
+    transition: filter 0.5s ease;
     cursor: pointer;
 }
 
 img.clicked {
-    filter: blur(0); /* Remove blur on click */
+    filter: blur(0);
 }
 
 /* Styling for falling hearts */
@@ -63,7 +59,7 @@ img.clicked {
     background-color: #ffffff; /* White color */
     transform: rotate(45deg);
     z-index: 0;
-    opacity: 1; /* Set initial opacity */
+    opacity: 1;
 }
 
 .falling-heart:before,
@@ -77,78 +73,39 @@ img.clicked {
 }
 
 .falling-heart:before {
-    top: -10px; /* Move up for heart shape */
+    top: -10px; /* Adjust for heart shape */
     left: 0;
 }
 
 .falling-heart:after {
-    left: 10px; /* Move right for heart shape */
+    left: 10px; /* Adjust for heart shape */
 }
 
-/* Animation */
+/* Animation to make the hearts fall down the page */
 @keyframes fall {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
+        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
+        opacity: 0; /* Fade out */
     }
 }
 
-/* Responsive styling */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
+.falling-heart {
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
     }
-    img {
-        width: 150px; /* Adjust image size for smaller screens */
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
+        opacity: 0; /* Fade out */
     }
-}
-/* General styling */
-body {
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-/* Smooth animations */
-h1, p, .image-container, button {
-    transition: all 0.3s ease;
-}
-
-h1:hover, p:hover {
-    transform: scale(1.05);
-}
-
-button:hover {
-    background-color: #ff7675;
-    transform: scale(1.1);
-}
-
-/* Image blur effect */
-.blurred {
-    filter: blur(5px);
-    transition: filter 0.3s ease;
-}
-
-.blurred:hover {
-    filter: blur(3px);
-}
-/* Smooth fade-in on hover */
-.interactive-button:hover {
-    background-color: #a29bfe;
-}
-
-/* Animation on Scroll (AOS) Styling */
-[data-aos] {
-    opacity: 0;
-    transition-property: opacity, transform;
-}
-
-[data-aos].aos-animate {
-    opacity: 1;
 }
 
 /* Optional: smooth scrolling behavior */

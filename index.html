@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Icecube Site</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="aos.css" rel="stylesheet">
 </head>
 <body>
     <canvas id="fireworksCanvas"></canvas>
 
     <div class="container">
-        <h1>hey pussy!</h1>
+        <h1>Hey Pussy!</h1>
         <div class="heart"></div>
         <div class="image-container">
             <img src="IMG_1594.JPG" alt="Picture of Us Together">
@@ -33,7 +34,6 @@
             <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
         </div>
         <button id="openModal" data-aos="fade-up" class="interactive-button">Click for a Surprise!</button>
-        <button id="playAudio" class="play-button">Play Music</button>
     </div>
 
     <script src="script.js"></script>
@@ -41,7 +41,7 @@
     <script>
         AOS.init(); // Initialize AOS library
 
-        // Modal logic...
+        // Modal logic
         const modal = document.getElementById("myModal");
         const img = document.getElementById("triggerImage");
         const btn = document.getElementById("openModal");
@@ -53,6 +53,7 @@
 
         img.onclick = function() {
             modal.style.display = "block";
+            img.classList.remove('blurred');
         }
 
         closeModal.onclick = function() {
@@ -63,12 +64,6 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
-
-        // Remove blur when image is clicked
-        img.onclick = function() {
-            modal.style.display = "block";
-            img.classList.remove('blurred');
         }
     </script>
 </body>
