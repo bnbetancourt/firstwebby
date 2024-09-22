@@ -84,7 +84,7 @@ img {
 
 .heart-bomb {
     font-size: 50px;
-    color: red;
+    color: rgb(107, 3, 3);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -92,11 +92,11 @@ img {
     z-index: 200;
 }
 .falling-heart {
+    position: absolute;
     width: 20px;
     height: 20px;
-    background-color: red; /* Change to your desired color */
+    background-color: rgb(70, 1, 1);
     transform: rotate(45deg);
-    border-radius: 50%; /* To make it round */
+    z-index: 100;
     opacity: 1;
-    position: absolute;
-}
+    animation: fall linear forwards;
