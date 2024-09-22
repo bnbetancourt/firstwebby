@@ -24,11 +24,9 @@ window.onload = function() {
     const img1 = document.getElementById('firstImage');
     const img2 = document.getElementById('triggerImage');
 
-    img1.classList.remove('blurred'); // Slowly unblur first image
-    img2.classList.remove('blurred'); // Slowly unblur second image
-
+    // Delay the unblur effect for 2 seconds after the page loads
     setTimeout(() => {
         img1.classList.remove('blurred');
         img2.classList.remove('blurred');
-    }, 2000); // Adjust delay for unblur effect
+    }, 2000);
 };
