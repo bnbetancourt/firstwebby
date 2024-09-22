@@ -16,20 +16,20 @@ body {
 }
 
 #dynamicText {
-    color: white; /* Text color */
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .interactive-text {
     color: white;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .soundcloud-player {
     position: absolute;
-    left: 20px; /* Adjust the position */
-    top: 20px; /* Adjust the position */
-    z-index: 10; /* Ensure it appears above the background */
+    left: 20px;
+    top: 20px;
+    z-index: 10;
 }
 
 .interactive-button {
@@ -69,7 +69,7 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: #ffffff; /* White color */
+    background-color: #ffffff;
     transform: rotate(45deg);
     z-index: 0;
     opacity: 1;
@@ -81,28 +81,27 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #ffffff; /* White color */
+    background-color: #ffffff;
     border-radius: 50%;
 }
 
 .falling-heart:before {
-    top: -10px; /* Adjust for heart shape */
+    top: -10px;
     left: 0;
 }
 
 .falling-heart:after {
-    left: 10px; /* Adjust for heart shape */
+    left: 10px;
 }
 
-/* Animation to make the hearts fall down the page */
 @keyframes fall {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
-        opacity: 0; /* Fade out */
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
     }
 }
 
@@ -113,4 +112,8 @@ img.clicked {
 /* Optional: smooth scrolling behavior */
 html {
     scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none;
 }

@@ -9,22 +9,18 @@ window.onload = function() {
         const heart = document.createElement('div');
         heart.classList.add('falling-heart');
 
-        // Set random position for each heart
         heart.style.left = `${random(0, 100)}vw`;
-        heart.style.animationDuration = `${random(3, 6)}s`; // Random fall speed
+        heart.style.animationDuration = `${random(3, 6)}s`;
 
         body.appendChild(heart);
 
-        // Remove the heart after it falls out of view
         setTimeout(() => {
             heart.remove();
-        }, 6000); // Match the longest animation duration
+        }, 6000);
     }
 
-    // Create hearts at regular intervals
-    setInterval(createHeart, 300); // Adjust this value to control the heart spawn rate
+    setInterval(createHeart, 300);
 
-    // Image click to remove blur
     const img1 = document.getElementById('firstImage');
     const img2 = document.getElementById('triggerImage');
 
