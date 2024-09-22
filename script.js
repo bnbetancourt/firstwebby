@@ -25,7 +25,7 @@ window.onload = function() {
     setInterval(createHeart, 300); // Adjust this value to control the heart spawn rate
 
     // Image click to remove blur
-    const image = document.querySelector('img');
+    const image = document.getElementById('triggerImage');
     image.addEventListener('click', function() {
         image.classList.add('clicked'); // Remove blur when clicked
     });

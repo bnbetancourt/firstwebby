@@ -50,6 +50,14 @@ img.clicked {
     filter: blur(0);
 }
 
+/* Styling for SoundCloud Player */
+.soundcloud-player {
+    position: absolute;
+    left: 20px; /* Adjust the position */
+    top: 20px; /* Adjust the position */
+    z-index: 10; /* Ensure it appears above the background */
+}
+
 /* Styling for falling hearts */
 .falling-heart {
     width: 20px;
@@ -95,17 +103,6 @@ img.clicked {
 
 .falling-heart {
     animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg); /* Fall and rotate */
-        opacity: 0; /* Fade out */
-    }
 }
 
 /* Optional: smooth scrolling behavior */
