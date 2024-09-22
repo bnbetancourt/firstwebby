@@ -60,11 +60,9 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: white;
-    transform-origin: center;
-    border-radius: 50%;
+    background-color: #77dd77; /* Pastel green */
     transform: rotate(45deg);
-    animation: fall 7s linear infinite, drift 3s ease-in-out infinite, rotate 5s linear infinite;
+    animation: fall linear infinite;
     z-index: 0; /* Behind the content */
 }
 
@@ -74,7 +72,7 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: white;
+    background-color: #77dd77; /* Pastel green */
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -85,35 +83,19 @@ img.clicked {
     left: 10px;
 }
 
-/* Keyframes for falling down */
+/* Animation to make the hearts fall down the page */
 @keyframes fall {
-    0% {
-        top: -20px;
-    }
-    100% {
-        top: 100vh; /* Move down to the bottom of the viewport */
+    to {
+        transform: translateY(100vh) rotate(45deg);
     }
 }
 
-/* Keyframes for rotating the hearts as they fall */
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg); /* Start without rotation */
+/* Responsive styling */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
     }
-    100% {
-        transform: rotate(360deg); /* Full rotation */
-    }
-}
-
-/* Keyframes for drifting side-to-side like falling leaves */
-@keyframes drift {
-    0% {
-        left: 0px;
-    }
-    50% {
-        left: 20px; /* Drift to the right */
-    }
-    100% {
-        left: -20px; /* Drift to the left */
+    img {
+        width: 150px; /* Adjust image size for smaller screens */
     }
 }
