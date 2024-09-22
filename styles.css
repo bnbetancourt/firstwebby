@@ -60,9 +60,9 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: #77dd77; /* Pastel green */
+    background-color: white; /* Change heart color to white */
     transform: rotate(45deg);
-    animation: fall linear infinite;
+    animation: fall 5s linear infinite, rotate 2s linear infinite, pulse 1.5s ease-in-out infinite, fadeOut 5s linear infinite;
     z-index: 0; /* Behind the content */
 }
 
@@ -72,7 +72,7 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #77dd77; /* Pastel green */
+    background-color: white; /* Change heart color to white */
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -83,19 +83,42 @@ img.clicked {
     left: 10px;
 }
 
-/* Animation to make the hearts fall down the page */
+/* Keyframes for the hearts falling down */
 @keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(45deg);
+    0% {
+        top: -20px;
+    }
+    100% {
+        top: 100vh; /* Move down to the bottom of the viewport */
     }
 }
 
-/* Responsive styling */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
+/* Keyframes for rotating the hearts as they fall */
+@keyframes rotate {
+    0% {
+        transform: rotate(45deg);
     }
-    img {
-        width: 150px; /* Adjust image size for smaller screens */
+    100% {
+        transform: rotate(405deg); /* 360 degrees + 45deg for initial rotation */
+    }
+}
+
+/* Keyframes for pulsing (growing and shrinking the hearts) */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1) rotate(45deg); /* Start and end at the normal size */
+    }
+    50% {
+        transform: scale(1.2) rotate(45deg); /* Increase size at the middle of the pulse */
+    }
+}
+
+/* Keyframes for fading out the hearts as they fall */
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Start fully visible */
+    }
+    100% {
+        opacity: 0; /* Fully disappear at the end */
     }
 }
