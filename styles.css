@@ -60,9 +60,11 @@ img.clicked {
     height: 20px;
     position: fixed;
     top: -20px;
-    background-color: white; /* Change heart color to white */
-    transform-origin: center; /* Set the rotation point to the center */
-    animation: fall 5s linear infinite, rotate 5s linear infinite, pulse 1.5s ease-in-out infinite, fadeOut 5s linear infinite;
+    background-color: white;
+    transform-origin: center;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    animation: fall 7s linear infinite, drift 3s ease-in-out infinite, rotate 5s linear infinite;
     z-index: 0; /* Behind the content */
 }
 
@@ -72,7 +74,7 @@ img.clicked {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: white; /* Change heart color to white */
+    background-color: white;
     border-radius: 50%;
     top: -10px;
     left: 0;
@@ -83,7 +85,7 @@ img.clicked {
     left: 10px;
 }
 
-/* Keyframes for falling down the screen */
+/* Keyframes for falling down */
 @keyframes fall {
     0% {
         top: -20px;
@@ -93,32 +95,25 @@ img.clicked {
     }
 }
 
-/* Keyframes for rotating the hearts */
+/* Keyframes for rotating the hearts as they fall */
 @keyframes rotate {
     0% {
-        transform: rotate(45deg); /* Initial heart orientation */
+        transform: rotate(0deg); /* Start without rotation */
     }
     100% {
-        transform: rotate(405deg); /* Full 360-degree rotation + initial 45-degree offset */
+        transform: rotate(360deg); /* Full rotation */
     }
 }
 
-/* Keyframes for pulsing the hearts */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1) rotate(45deg); /* Maintain the initial 45-degree rotation */
+/* Keyframes for drifting side-to-side like falling leaves */
+@keyframes drift {
+    0% {
+        left: 0px;
     }
     50% {
-        transform: scale(1.2) rotate(45deg); /* Pulse the size while keeping the rotation */
-    }
-}
-
-/* Keyframes for fading out as they fall */
-@keyframes fadeOut {
-    0% {
-        opacity: 1; /* Start fully visible */
+        left: 20px; /* Drift to the right */
     }
     100% {
-        opacity: 0; /* Fully disappear at the end */
+        left: -20px; /* Drift to the left */
     }
 }

@@ -35,3 +35,18 @@ window.onload = function() {
         image.classList.add('clicked'); // Remove blur when clicked
     });
 };
+// JavaScript to add multiple falling hearts and randomize their motion
+const numHearts = 20; // Number of hearts to fall
+const container = document.body;
+
+for (let i = 0; i < numHearts; i++) {
+    let heart = document.createElement("div");
+    heart.classList.add("falling-heart");
+
+    // Randomize the position and animation speed for each heart
+    heart.style.left = `${Math.random() * 100}vw`; // Random horizontal starting point
+    heart.style.animationDuration = `${Math.random() * 3 + 5}s`; // Random fall speed between 5 and 8 seconds
+    heart.style.animationDelay = `${Math.random() * 5}s`; // Stagger the starting time for each heart
+
+    container.appendChild(heart);
+}
