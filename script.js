@@ -7,7 +7,6 @@ window.onload = function() {
     const surpriseMessage = document.getElementById("surpriseMessage");
     const text1 = "Hey Jov's!";
     const text2 = "Put your finger on the envelope";
-    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
     let index1 = 0, index2 = 0;
 
     function typeText(text, element, index, callback) {
@@ -22,15 +21,6 @@ window.onload = function() {
 
     typeText(text1, dynamicText, index1); // Start typing effect for the main text
     setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
-
-    // Delay the unblur effect for 1 second after the page loads
-    const img1 = document.getElementById('firstImage');
-    const img2 = document.getElementById('triggerImage');
-
-    setTimeout(() => {
-        img1.classList.remove('blurred');
-        img2.classList.remove('blurred');
-    }, 1000); // 1 second
 
     // Play audio
     const audio = document.createElement('audio');
@@ -47,12 +37,10 @@ function showMessage() {
     const envelope = document.getElementById("envelope");
     envelope.innerHTML = "💌"; // Optionally add an icon
 
-    // Reset message text
-    message.innerHTML = ""; // Clear previous content
-
     // Typing effect for the surprise message
-    let index = 0;
     const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
+    let index = 0;
+    message.innerHTML = ""; // Clear previous content
 
     function typeSurpriseMessage() {
         if (index < thankYouMessage.length) {
@@ -61,5 +49,12 @@ function showMessage() {
             setTimeout(typeSurpriseMessage, 100); // Typing speed
         }
     }
+
+    // Unblur images
+    const img1 = document.getElementById('firstImage');
+    const img2 = document.getElementById('triggerImage');
+    img1.classList.remove('blurred');
+    img2.classList.remove('blurred');
+
     typeSurpriseMessage();
 }
