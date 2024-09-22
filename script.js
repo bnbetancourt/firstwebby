@@ -52,7 +52,7 @@ function showMessage() {
 
     // Typing effect for the surprise message
     let index = 0;
-    const thankYouMessage = "Thank you for being in my life!";
+    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
 
     function typeSurpriseMessage() {
         if (index < thankYouMessage.length) {
