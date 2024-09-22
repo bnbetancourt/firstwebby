@@ -23,15 +23,6 @@ window.onload = function() {
     typeText(text1, dynamicText, index1); // Start typing effect for the main text
     setTimeout(() => typeText(text2, envelopeText, index2), text1.length * 100 + 500); // Delay for the envelope text
 
-    // Delay the unblur effect for 2 seconds after the page loads
-    const img1 = document.getElementById('firstImage');
-    const img2 = document.getElementById('triggerImage');
-
-    setTimeout(() => {
-        img1.classList.remove('blurred');
-        img2.classList.remove('blurred');
-    }, 2000);
-
     // Play audio
     const audio = document.createElement('audio');
     audio.src = 'https://p.scdn.co/mp3-preview/5d7f006f8c3c3cdb56579cb43a81e8c1c5471f89?cid=6744dbb98d0e49b6a2e37766d7d4ab6e';

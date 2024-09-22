@@ -57,14 +57,7 @@ img {
     width: 200px;
     height: auto;
     border-radius: 10px;
-    filter: blur(10px); /* Short blur effect */
-    transition: filter 2s ease; /* Smooth transition for unblurring */
     cursor: pointer;
-}
-
-/* Fade effect after unblurring */
-.fade {
-    filter: blur(0);
 }
 
 /* Styling for falling hearts */
