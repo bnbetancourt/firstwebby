@@ -60,25 +60,15 @@ img {
     cursor: pointer;
 }
 
-.falling-heart-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 200; /* Ensure hearts are above all other content */
-}
-
 .falling-heart {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: white;
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 82%, 18% 100%, 0% 38%);
-    animation: fall 5s linear infinite;
+    background-color: red;
+    transform: rotate(45deg);
     z-index: 100;
     opacity: 1;
+    animation: fall linear forwards;
 }
 
 @keyframes fall {
@@ -88,7 +78,7 @@ img {
     }
     100% {
         transform: translateY(100vh) rotate(360deg);
-        opacity: 0; /* Fade out as the heart falls */
+        opacity: 0;
     }
 }
 
@@ -100,4 +90,13 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 200;
+}
+.falling-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(45, 189, 117);
+    transform: rotate(45deg);
+    z-index: 100;
+    opacity: 1;
 }
