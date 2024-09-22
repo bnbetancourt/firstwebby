@@ -5,23 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Icecube Site</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="aos.css" rel="stylesheet">
 </head>
 <body>
-    <audio id="backgroundMusic" autoplay loop>
-        <source src="https://open.spotify.com/track/5VA4Ispp52EA1sOqzMz3Av?si=c113b700980543f0" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-    
+    <canvas id="fireworksCanvas"></canvas>
+
     <div class="container">
-        <h1 class="typing" id="mainText">hey pussy!</h1>
+        <h1 id="dynamicText"></h1>
+        <div class="heart"></div>
         <div class="image-container">
-            <img id="firstImage" src="IMG_1594.JPG" alt="Picture of Us Together" class="blurred">
-            <img id="secondImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
+            <img src="IMG_1594.JPG" alt="Picture of Us Together" class="blurred" id="firstImage">
         </div>
-        <div id="envelope" class="floating-envelope"></div>
-        <div id="message" class="hidden-message"></div>
+    </div>
+
+    <div class="soundcloud-player">
+        <iframe src="https://open.spotify.com/embed/track/5VA4Ispp52EA1sOqzMz3Av?utm_source=generator" 
+                width="300" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; 
+                fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+        <p id="envelopeText" class="interactive-text"></p>
+        <div class="image-container" data-aos="fade-up">
+            <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
+        </div>
+        <div id="envelope" class="envelope" onclick="showMessage()"></div>
+        <p id="surpriseMessage" class="hidden">Thank you for being in my life!</p>
     </div>
 
     <script src="script.js"></script>
+    <script src="aos.js"></script>
 </body>
 </html>

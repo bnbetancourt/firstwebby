@@ -11,12 +11,42 @@ body {
 
 .container {
     text-align: center;
+    z-index: 1;
     position: relative;
 }
 
-h1, .hidden-message {
+#dynamicText, #envelopeText, #surpriseMessage {
     color: white;
-    text-shadow: 0 0 5px white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.soundcloud-player {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 10;
+}
+
+.envelope {
+    width: 50px;
+    height: 50px;
+    background-image: url('envelope-icon.png'); /* Replace with your envelope icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.envelope:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
 }
 
 .image-container {
@@ -28,31 +58,57 @@ img {
     height: auto;
     border-radius: 10px;
     filter: blur(10px);
-    transition: filter 0.5s ease;
+    transition: filter 2s ease; /* Smooth transition for unblurring */
     cursor: pointer;
 }
 
-img.blurred {
-    filter: blur(10px);
+/* Styling for falling hearts */
+.falling-heart {
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    top: -20px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    z-index: 0;
+    opacity: 1;
 }
 
-.floating-envelope {
-    width: 50px; /* Adjust size */
-    height: 50px; /* Adjust size */
-    background-image: url('envelope-icon.png'); /* Your envelope icon */
+.falling-heart:before,
+.falling-heart:after {
+    content: "";
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-    animation: float 3s infinite ease-in-out;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.falling-heart:before {
+    top: -10px;
+    left: 0;
 }
 
-.hidden-message {
-    display: none;
+.falling-heart:after {
+    left: 10px;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.falling-heart {
+    animation: fall linear infinite;
+}
+
+/* Optional: smooth scrolling behavior */
+html {
+    scroll-behavior: smooth;
 }
