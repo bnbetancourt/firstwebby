@@ -5,8 +5,8 @@ window.onload = function() {
     const dynamicText = document.getElementById("dynamicText");
     const envelopeText = document.getElementById("envelopeText");
     const surpriseMessage = document.getElementById("surpriseMessage");
-    const text1 = "Hey Jov's!";
-    const text2 = "Put your finger on the envelope";
+    const text1 = "Hey Jov's! miss you - Play the song first";
+    const text2 = "Put your finger on the envelope, HURRY";
     let index1 = 0, index2 = 0;
 
     function typeText(text, element, index, callback) {
@@ -38,7 +38,7 @@ function showMessage() {
     envelope.innerHTML = "💌"; // Optionally add an icon
 
     // Typing effect for the surprise message
-    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
+    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down. I can never fully explain just how I feel about you because words will never be enough. You entering my life has been the best thing to ever happen to me and I enjoy every second of my days spent with you. You mean more than the world to me pussyboy, I hope I can even get close to giving to as much as you deserve, because you honestly deserve more than what this world has to offer";
     let index = 0;
     message.innerHTML = ""; // Clear previous content
 
