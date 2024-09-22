@@ -42,12 +42,6 @@ window.onload = function() {
     const img1 = document.getElementById('firstImage');
     const img2 = document.getElementById('triggerImage');
 
-    // Delay the unblur effect for 2 seconds after the page loads
-    setTimeout(() => {
-        img1.classList.remove('blurred');
-        img2.classList.remove('blurred');
-    }, 2000);
-
     // Play audio
     const audio = document.createElement('audio');
     audio.src = 'https://p.scdn.co/mp3-preview/5d7f006f8c3c3cdb56579cb43a81e8c1c5471f89?cid=6744dbb98d0e49b6a2e37766d7d4ab6e';
