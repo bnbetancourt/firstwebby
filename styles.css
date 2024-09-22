@@ -100,3 +100,11 @@ img {
     opacity: 1;
     position: absolute;
 }
+.heart-bomb {
+    transition: transform 1s ease;
+}
+
+.falling-heart {
+    font-size: 20px; /* Adjust size for falling hearts */
+    transition: transform 0.5s, opacity 0.5s; /* Animation for hearts */
+}
