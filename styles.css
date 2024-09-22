@@ -91,3 +91,12 @@ img {
     transform: translate(-50%, -50%);
     z-index: 200;
 }
+.falling-heart {
+    width: 20px;
+    height: 20px;
+    background-color: red; /* Change to your desired color */
+    transform: rotate(45deg);
+    border-radius: 50%; /* To make it round */
+    opacity: 1;
+    position: absolute;
+}
