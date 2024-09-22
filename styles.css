@@ -20,6 +20,13 @@ body {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* White glow */
 }
 
+.soundcloud-player {
+    position: absolute;
+    left: 20px; /* Adjust the position */
+    top: 20px; /* Adjust the position */
+    z-index: 10; /* Ensure it appears above the background */
+}
+
 .interactive-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -49,14 +56,6 @@ img {
 
 img.clicked {
     filter: blur(0);
-}
-
-/* Styling for SoundCloud Player */
-.soundcloud-player {
-    position: absolute;
-    left: 20px; /* Adjust the position */
-    top: 20px; /* Adjust the position */
-    z-index: 10; /* Ensure it appears above the background */
 }
 
 /* Styling for falling hearts */

@@ -28,8 +28,7 @@
 
     <!-- Main Content Section -->
     <div class="container">
-        <h1 data-aos="fade-up">Our Special Moments</h1>
-        <p data-aos="fade-up">Click the image or button to reveal something special!</p>
+        <p data-aos="fade-up">Click the images to reveal something special!</p>
         <div class="image-container" data-aos="fade-up">
             <img id="triggerImage" src="IMG_7278.JPG" alt="Special Moment" class="blurred">
         </div>
@@ -64,7 +63,8 @@
         const closeModal = document.getElementsByClassName("close")[0];
 
         btn.onclick = function() {
-            modal.style.display = "block";
+            btn.innerHTML = "Thank you for making me the luckiest person alive!";
+            btn.disabled = true; // Disable the button after clicking
         }
 
         img1.onclick = function() {
@@ -72,18 +72,7 @@
         }
 
         img2.onclick = function() {
-            modal.style.display = "block";
             img2.classList.remove('blurred'); // Unblur second image
-        }
-
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
         }
     </script>
 </body>
