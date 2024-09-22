@@ -5,9 +5,9 @@ window.onload = function() {
     const dynamicText = document.getElementById("dynamicText");
     const envelopeText = document.getElementById("envelopeText");
     const surpriseMessage = document.getElementById("surpriseMessage");
-    const text1 = "Hey Pussy!";
-    const text2 = "Click the envelope to reveal a surprise message!";
-    const thankYouMessage = "Thank you for being in my life!";
+    const text1 = "Hey Jov's!";
+    const text2 = "Put your finger on the envelope";
+    const thankYouMessage = "Being with you feels like a drive back home from the beach, down PCH, all windows down!";
     let index1 = 0, index2 = 0;
 
     function typeText(text, element, index, callback) {
