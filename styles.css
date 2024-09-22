@@ -2,42 +2,38 @@ body {
     background-image: url('dark-night-1920-x-1080-background-g4y4gx9al85th5v4.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
     margin: 0;
     font-family: 'Playfair Display', serif;
-    overflow-x: hidden;
 }
 
 .container {
     text-align: center;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
-#dynamicText, #envelopeText, #surpriseMessage {
+h1, #hiddenMessage {
     color: white;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
-.soundcloud-player {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    z-index: 10;
+.pulsing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 .envelope {
-    width: 50px;
-    height: 50px;
-    background-image: url('icons8-heart-envelope-48.png'); /* Replace with your envelope icon */
-    background-size: contain;
-    background-repeat: no-repeat;
+    font-size: 50px;
+    cursor: pointer;
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    cursor: pointer;
     transition: transform 0.3s;
 }
 
@@ -49,66 +45,13 @@ body {
     display: none;
 }
 
-.image-container {
-    position: relative;
+.typing {
+    animation: typing 3s steps(30, end);
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    filter: blur(10px);
-    transition: filter 2s ease; /* Smooth transition for unblurring */
-    cursor: pointer;
-}
-
-/* Styling for falling hearts */
-.falling-heart {
-    width: 20px;
-    height: 20px;
-    position: fixed;
-    top: -20px;
-    background-color: #ffffff;
-    transform: rotate(45deg);
-    z-index: 0;
-    opacity: 1;
-}
-
-.falling-heart:before,
-.falling-heart:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #ffffff;
-    border-radius: 50%;
-}
-
-.falling-heart:before {
-    top: -10px;
-    left: 0;
-}
-
-.falling-heart:after {
-    left: 10px;
-}
-
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-.falling-heart {
-    animation: fall linear infinite;
-}
-
-/* Optional: smooth scrolling behavior */
-html {
-    scroll-behavior: smooth;
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
